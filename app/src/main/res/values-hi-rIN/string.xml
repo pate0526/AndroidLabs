@@ -4,4 +4,8 @@
     <string name="hello_message">Namste!</string>
     <string name="Login">Login Kare</string>
     <string name="Password">Password</string>
+    <string name="Login_button">Login</string>
+    <string name="ButtonText">I\'m a button</string>
+    <string name="dialog_message">Are you sure want to finish this Activity?</string>
+    <string name="dialog_title">Finish Activity</string>
 </resources>
