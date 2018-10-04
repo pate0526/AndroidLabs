@@ -12,7 +12,7 @@ import android.widget.EditText;
 public class LoginActivity extends Activity {
     private static final String MY_PREF = "MY_PREF";
     private static final String DEFAULT_EMAIL_KEY = "DEFAULT_EMAIL_KEY";
-    protected static final String ACTIVITY_NAME = "StartActivity";
+    protected static final String ACTIVITY_NAME = "LoginActivity";
     private Button loginButton;
     private EditText emailEditText;
     private SharedPreferences sharedPref;

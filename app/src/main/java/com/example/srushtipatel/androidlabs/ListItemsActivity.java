@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class ListItemsActivity extends Activity {
 
-    protected static final String ACTIVITY_NAME = "StartActivity";
+    protected static final String ACTIVITY_NAME = "ListItemsActivity";
     ImageButton b1;
     static final int REQUEST_IMAGE_CAPTURE = 1;
 

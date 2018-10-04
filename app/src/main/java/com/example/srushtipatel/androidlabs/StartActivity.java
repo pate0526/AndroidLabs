@@ -14,6 +14,7 @@ public class StartActivity extends Activity {
 
     protected static final String ACTIVITY_NAME = "StartActivity";
     Button b1;
+    Button b2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,29 +23,37 @@ public class StartActivity extends Activity {
         Log.i(ACTIVITY_NAME, "In onCreate()");
 
         b1 = findViewById(R.id.button);
-        b1.setOnClickListener(new View.OnClickListener(){
+        b1.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, ListItemsActivity.class);
                 startActivityForResult(intent, 50);
+
+            }
+        });
+        b2 = findViewById(R.id.chatButton);
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(ACTIVITY_NAME, "User clicked start Chat");
+                Intent intent1 = new Intent(StartActivity.this , ChatWindow.class);
+                startActivity(intent1);
+
             }
         });
     }
-
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         String messagepassed = null;
-        if (requestCode == 50) {
+        if (requestCode == 50 && resultCode == RESULT_OK) {
             Log.i(ACTIVITY_NAME, "Returned to StartActivity.onActivityResult");
-        }
-        if (resultCode == RESULT_OK) {
             messagepassed = data.getStringExtra("Response");
-        Toast toast = Toast.makeText(StartActivity.this,  messagepassed, Toast.LENGTH_LONG);
-        toast.show();
+            Toast toast = Toast.makeText(StartActivity.this, messagepassed, Toast.LENGTH_LONG);
+            toast.show();
         }
     }
 

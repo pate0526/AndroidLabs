@@ -3,9 +3,11 @@
     <string name="app_name">AndroidLabs</string>
     <string name="hello_message">Namste!</string>
     <string name="Login">Login Kare</string>
-    <string name="Password">Password</string>
-    <string name="Login_button">Login</string>
-    <string name="ButtonText">I\'m a button</string>
+    <string name="Password">Password1</string>
+    <string name="Login_button">Login1</string>
+    <string name="ButtonText">Me Button Hu</string>
     <string name="dialog_message">Are you sure want to finish this Activity?</string>
-    <string name="dialog_title">Finish Activity</string>
+    <string name="dialog_title">Activity Finish kare</string>
+    <string name="chatButton">Chat chalu kare</string>
+    <string name="send">Bheje</string>
 </resources>
