@@ -8,6 +8,6 @@
     <string name="ButtonText">Me Button Hu</string>
     <string name="dialog_message">Are you sure want to finish this Activity?</string>
     <string name="dialog_title">Activity Finish kare</string>
-    <string name="chatButton">Chat chalu kare</string>
+    <string name="chatbutton">Chat chalu kare</string>
     <string name="send">Bheje</string>
 </resources>
