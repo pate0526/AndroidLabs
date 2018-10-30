@@ -13,42 +13,55 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ChatWindow extends Activity {
 
-    ListView l1;
-    EditText e1;
-    Button b1;
-    ArrayList<String> chatMessages;
+    protected static final String ACTIVITY_NAME = "ChatWindow";
+    private  ListView chatListView;
+    private  EditText e1;
+    private Button b1;
+    private List<String> chatMessages;
+    private ChatDatabaseHelper chatdatabase;
+    private Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_window);
         Log.i("ChatWindow", "ChatWindow onCreate()");
+        ctx = this;
+        chatdatabase = new ChatDatabaseHelper(ctx);
 
-        chatMessages = new ArrayList<String>();
-        l1 = findViewById(R.id.myList);
+        chatMessages = chatdatabase.getAllMessages();
+        chatListView = findViewById(R.id.myList);
         e1 = (EditText) findViewById(R.id.editText);
         b1 = findViewById(R.id.send);
 
         ChatAdapter messageAdapter = new ChatAdapter(this);
-        l1.setAdapter(messageAdapter);
+        chatListView.setAdapter(messageAdapter);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String message = e1.getText().toString();
 
-                chatMessages.add(e1.getText().toString());
+                chatdatabase.insertMessage(message);
+                chatMessages.add(message);
                 messageAdapter.notifyDataSetChanged();
                 e1.setText("");
+
+
             }
         });
 
-
     }
 
+    protected void onDestroy() {
+        super.onDestroy();
+        chatdatabase.close();
+        Log.i(ACTIVITY_NAME, "In onDestroy()");
+    }
 
     private class ChatAdapter extends ArrayAdapter<String> {
 
@@ -89,5 +102,4 @@ public class ChatWindow extends Activity {
             return position;
         }
     }
-
 }

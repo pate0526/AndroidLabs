@@ -37,7 +37,12 @@ public class ListItemsActivity extends Activity {
         s1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                CharSequence text = "Switch is On";// "Switch is Off"
+                CharSequence text;
+                if (isChecked)
+                    text = "Switch is On";// "Switch is Off"
+                else
+                    text = "Switch is Off";
+
                 int duration = Toast.LENGTH_SHORT; //= Toast.LENGTH_LONG if Off
                 Toast toast = Toast.makeText(ListItemsActivity.this, text, duration); //this is the ListActivity
                 toast.show(); //display your message box
@@ -45,35 +50,31 @@ public class ListItemsActivity extends Activity {
         });
         CheckBox c1 = (CheckBox) findViewById(R.id.checkBox);
         c1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                                          @Override
-                                          public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ListItemsActivity.this);
 
-                                              if (isChecked) {
-                                                  AlertDialog.Builder builder = new AlertDialog.Builder(ListItemsActivity.this);
+                    builder.setMessage(R.string.dialog_message) //Add a dialog message to strings.xml
+                            .setTitle(R.string.dialog_title)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
 
-                                                  builder.setMessage(R.string.dialog_message) //Add a dialog message to strings.xml
-                                                          .setTitle(R.string.dialog_title)
-                                                          .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                                              public void onClick(DialogInterface dialog, int id) {
-
-                                                                  Intent resultIntent = new Intent();
-                                                                  resultIntent.putExtra("Response", "Here is my response");
-                                                                  setResult(Activity.RESULT_OK, resultIntent);
-                                                                  finish();
-                                                              }
-                                                          })
-                                                          .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                                                              public void onClick(DialogInterface dialog, int id) {
-                                                              }
-                                                          })
-                                                          .show();
-                                              }
-                                          }
-                                      }
-        );
-
-
+                                    Intent resultIntent = new Intent();
+                                    resultIntent.putExtra("Response", "Here is my response");
+                                    setResult(Activity.RESULT_OK, resultIntent);
+                                    finish();
+                                }
+                            })
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                }
+                            })
+                            .show();
+                }
+            }
+        });
     }
 
     @Override
