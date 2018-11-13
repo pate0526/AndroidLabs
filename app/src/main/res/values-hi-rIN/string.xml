@@ -10,4 +10,5 @@
     <string name="dialog_title">Activity Finish kare</string>
     <string name="chatbutton">Chat chalu kare</string>
     <string name="send">Bheje</string>
+    <string name="weatherforecast">मौसम पूर्वानुमान</string>
 </resources>
